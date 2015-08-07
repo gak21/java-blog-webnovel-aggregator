@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples.service.service</groupId>
-	<artifactId>java-blog-webnovel-aggregator</artifactId>
+	<artifactId>webnovel-blog-aggregator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -26,13 +26,17 @@
 
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
-		<slf4j.version>1.7.5</slf4j.version>
+		<slf4j.version>1.7.6</slf4j.version>
 
 		<!-- Jetty -->
 		<jetty.version>9.3.1.v20150714</jetty.version>
 
 		<!-- Test -->
 		<junit.version>4.11</junit.version>
+
+		<!-- apache tiles -->
+		<apache-tiles.version>3.0.5</apache-tiles.version>
+
 
 	</properties>
 
@@ -73,12 +77,6 @@
 
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
@@ -105,6 +103,28 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<!-- apache tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${apache-tiles.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${apache-tiles.version}</version>
+		</dependency>
+
+
+
 
 	</dependencies>
 
