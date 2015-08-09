@@ -1,9 +1,8 @@
 package com.webnovelscrossroads.web;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class IndexController {
@@ -13,11 +12,6 @@ public class IndexController {
 		System.out.println(request.getServletPath());
 		
 		return "index";
-	}
-	
-	@RequestMapping("/showMessage")
-	public String showMessage(){
-		return "showMessage";
 	}
 	
 }
