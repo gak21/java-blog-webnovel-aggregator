@@ -12,7 +12,10 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/beans-service.xml</param-value>
+		<param-value>
+		classpath:spring/beans-service.xml
+		classpath:spring/beans-datasource.xml
+		</param-value>
 	</context-param>
 
 	<listener>
