@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+
+<tilesx:useAttribute name="current" scope="request" />
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +19,7 @@
 
 </head>
 <body>
+
 	<div class="container">
 		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="body" />

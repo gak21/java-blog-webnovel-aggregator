@@ -5,14 +5,21 @@
 <tiles-definitions>
 	<definition name="common" template="/WEB-INF/views/layout/classic.jsp">	
 		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
-		<put-attribute name="body" value="/WEB-INF/views/jsp/index.jsp" />
+		<put-attribute name="keywords" value="Web, Novel, List, Dictionary, Webnovel, Translation, Autors" />
+		<put-attribute name="description" value="Here you can find a daily updated list of Web Novels from different websites on which groups of people translate Web Novels. Links to translators blogs." />
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+		<put-attribute name="current" value="index" />	
 	</definition>
 
 	<definition name="index" extends="common">
 		<put-attribute name="title" value="Web Novel Blog Aggregator" />
-		<put-attribute name="keywords" value="Web, Novel, List, Dictionary, Webnovel, Translation, Autors" />
-		<put-attribute name="description" value="Here you can find a daily updated list of Web Novels from different websites on which groups of people translate Web Novels. Links to translators blogs." />
-		
+		<put-attribute name="body" value="/WEB-INF/views/jsp/index.jsp" />
+		<put-attribute name="current" value="index" />	
+	</definition>
+	
+	<definition name="users" extends="common">
+		<put-attribute name="title" value="users" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/users.jsp" />	
+		<put-attribute name="current" value="users" />	
 	</definition>
 </tiles-definitions>
