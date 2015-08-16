@@ -3,7 +3,7 @@
 
 <jsp:useBean id="current" type="java.lang.String" scope="request"/>
 
- <nav class="navbar navbar-default">
+ 	<nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -18,10 +18,10 @@
             <ul class="nav navbar-nav">
               <li class="${current == 'index' ? 'active' : ''}"><a href="<spring:url value="/" />">Home</a></li>
               <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html" />">Users</a></li>
+              <li class="${current == 'register' ? 'active' : ''}"><a href="<spring:url value="/register.html" />">Register</a></li>
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-
-</nav>
+	</nav>

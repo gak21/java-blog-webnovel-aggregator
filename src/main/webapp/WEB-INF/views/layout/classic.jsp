@@ -16,10 +16,8 @@
 	<!-- Bootstrap core CSS and optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
 </head>
 <body>
-
 	<div class="container">
 		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="body" />
