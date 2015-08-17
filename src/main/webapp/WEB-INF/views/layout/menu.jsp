@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-
+<%@ include file="../layout/taglib.jspf" %>
 <jsp:useBean id="current" type="java.lang.String" scope="request"/>
+<c:url value="/logout" var="logoutUrl" />
 
  	<nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -20,7 +21,12 @@
               <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html" />">Users</a></li>
               <li class="${current == 'register' ? 'active' : ''}"><a href="<spring:url value="/register.html" />">Register</a></li>
               <li class="${current == 'login' ? 'active' : ''}"><a href="<spring:url value="/login.html" />">Login</a></li>
+              <li><a href="#" onclick="document.forms[0].submit();">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
 	</nav>
+	<!-- spring security log out for csrf  -->
+	<form method="post" action="${logoutUrl}" id="form-logout">
+    	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>        
+	</form>

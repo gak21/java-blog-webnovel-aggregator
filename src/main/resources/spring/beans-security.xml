@@ -13,14 +13,13 @@
 		login-page="/login.html"
 		authentication-failure-url="/login.html?failed=true"
 		default-target-url="/users.html" />
-		<logout />
+		<logout logout-url="/logout" logout-success-url="/"  />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
 				<user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
-			
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

@@ -33,5 +33,6 @@
 	<mvc:annotation-driven />
 	
 	<mvc:view-controller path="/login.html" view-name="login"/>
+	
 </beans>
 
