@@ -19,7 +19,7 @@
 	</context:component-scan>
 
 	<tx:annotation-driven />
-		
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="emf" />
 
@@ -50,5 +50,8 @@
 	<jpa:repositories base-package="com.webnovelscrossroads.dao"
 		transaction-manager-ref="transactionManager"
 		entity-manager-factory-ref="emf" />
+	
+	
+	<import resource="beans-security.xml"/>
 	
 </beans>
