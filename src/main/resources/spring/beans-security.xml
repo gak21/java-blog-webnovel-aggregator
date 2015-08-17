@@ -9,7 +9,10 @@
 	<http>
 		<intercept-url pattern="/users**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ADMIN')" />
-		<form-login />
+		<form-login 
+		login-page="/login.html"
+		authentication-failure-url="/login.html?failed=true"
+		default-target-url="/users.html" />
 		<logout />
 	</http>
 
