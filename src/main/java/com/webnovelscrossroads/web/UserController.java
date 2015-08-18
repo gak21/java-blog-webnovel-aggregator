@@ -30,6 +30,7 @@ public class UserController {
 		return "users";	
 	}
 	
+	
 	@RequestMapping("/users/{id}")
 	public String detail(Model model, @PathVariable final int id){
 		model.addAttribute("user", userService.findOneWithBlogs(id));
