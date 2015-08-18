@@ -6,4 +6,6 @@ import com.webnovelscrossroads.model.User;
 
 public interface UserDao extends JpaRepository<User, Integer> {
 
+	User findByName(String Name);
+
 }

@@ -6,4 +6,6 @@ import com.webnovelscrossroads.model.Role;
 
 public interface RoleDao extends JpaRepository<Role, Integer> {
 
+	Role findByName(String name);
+
 }

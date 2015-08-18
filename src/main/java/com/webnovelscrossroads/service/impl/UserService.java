@@ -2,6 +2,7 @@ package com.webnovelscrossroads.service.impl;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,13 +10,16 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.webnovelscrossroads.dao.BlogDao;
 import com.webnovelscrossroads.dao.ItemDao;
+import com.webnovelscrossroads.dao.RoleDao;
 import com.webnovelscrossroads.dao.UserDao;
 import com.webnovelscrossroads.model.Blog;
 import com.webnovelscrossroads.model.Item;
+import com.webnovelscrossroads.model.Role;
 import com.webnovelscrossroads.model.User;
 
 @Service
@@ -31,7 +35,8 @@ public class UserService {
 	@Autowired
 	private ItemDao itemDao;
 	
-	
+	@Autowired
+	private RoleDao roleDao;
 	
 	public List<User> findAll(){
 		return userDao.findAll();
@@ -53,7 +58,20 @@ public class UserService {
 	}
 
 	public void save(User user) {
+		user.setEnabled(true);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+		
+		List<Role> roles =new ArrayList<>();
+		roles.add(roleDao.findByName("ROLE_USER"));
+		user.setRoles(roles);
+		
 		userDao.save(user);
 		
+	}
+
+	public User findOneWithBlogs(String name) {
+		User user = userDao.findByName(name);
+		return findOneWithBlogs(user.getId());
 	}
 }

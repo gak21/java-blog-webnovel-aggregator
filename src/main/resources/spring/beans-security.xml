@@ -9,21 +9,24 @@
 	<http>
 		<intercept-url pattern="/users**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/account**" access="hasRole('USER')" />
 		<form-login 
 		login-page="/login.html"
 		authentication-failure-url="/login.html?failed=true"
-		default-target-url="/users.html" />
+		default-target-url="/" />
 		<logout logout-url="/logout" logout-success-url="/"  />
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
+		<password-encoder hash="bcrypt" />
+		
 		<jdbc-user-service data-source-ref="dataSource" 
 		authorities-by-username-query="select user.name, role.name from user
 		join user_role on user.id = user_role.users_id
 		join role on user_role.roles_id = role.id
 		where user.name = ?"
-		users-by-username-query="select name,password,1 from user where name = ?" />
+		users-by-username-query="select name,password,enabled from user where name = ?" />
 
 		</authentication-provider>
 	</authentication-manager>

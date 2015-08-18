@@ -47,7 +47,10 @@ body {
 </style>
 
 <c:if test="${param.failed == true}">
-<div>The password is incorrect. Try again</div>
+	<div class="alert alert-danger" role="alert">
+ 		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+ 		 The password is incorrect. Try again
+	</div>
 </c:if>
 
  <form class="form-signin" role="form" action="${postloginUrl}" method="POST">
