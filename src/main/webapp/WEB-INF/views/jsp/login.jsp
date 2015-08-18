@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglib.jspf" %>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <c:url var="postloginUrl" value="/login" />
 
 <style>
@@ -56,7 +56,6 @@ body {
         <input type="text" name="username" id="name" class="form-control" placeholder="Name" required autofocus>
         <label for="password" class="sr-only">Password</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-        <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        
+        <security:csrfInput/>        
 </form>
