@@ -125,6 +125,7 @@
 			<version>${spring-framework.version}</version>
 		</dependency>
 
+
 		<!-- Spring and Transactions -->
 
 
@@ -173,11 +174,11 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
-        <dependency>
+           <dependency>
        		 <groupId>commons-dbcp</groupId>
        		 <artifactId>commons-dbcp</artifactId>
        		 <version>1.4</version>
-    	</dependency>      
+    	</dependency>   
     
 	<!--	<dependency>
 			<groupId>org.hsqldb</groupId>
