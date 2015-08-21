@@ -27,7 +27,6 @@ public class AdminController {
 		return "user-detail";
 	}
 	
-	
 	@RequestMapping("/remove/{id}")
 	public String userBlog(@PathVariable int id){
 		userService.delete(id);
