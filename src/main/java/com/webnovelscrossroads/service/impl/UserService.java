@@ -74,4 +74,9 @@ public class UserService {
 		User user = userDao.findByName(name);
 		return findOneWithBlogs(user.getId());
 	}
+
+	public void delete(int id) {
+		userDao.delete(id);
+		
+	}
 }
