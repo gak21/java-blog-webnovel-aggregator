@@ -32,7 +32,9 @@
 	
 	<mvc:annotation-driven />
 	
+	<mvc:view-controller path="/index.html" view-name="index"/>
 	<mvc:view-controller path="/login.html" view-name="login"/>
+	
 	
 </beans>
 

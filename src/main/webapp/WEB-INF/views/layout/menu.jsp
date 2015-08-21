@@ -27,7 +27,7 @@
               	<li class="${current == 'login' ? 'active' : ''}"><a href="<spring:url value="/login.html" />">Login</a></li>
               </security:authorize>
               <security:authorize access="isAuthenticated()">
-              <li><a href="<spring:url value="/account.html" />">My account</a></li>
+              <li class="${current == 'account' ? 'active' : ''}" ><a href="<spring:url value="/account.html" />">My account</a></li>
               <li><a href="#" onclick="document.forms[0].submit();">Logout</a></li>
               	<!-- spring security log out for csrf  -->
 			  <form method="post" action="${logoutUrl}" id="form-logout">  	
