@@ -12,4 +12,6 @@ import java.lang.Integer;
 public interface ItemDao extends JpaRepository<Item, Integer> {
 
 	List<Item> findByBlog(Blog blog, Pageable pageable);
+	
+	Item findByBlogAndLink(Blog blog, String link);
 }

@@ -12,7 +12,7 @@
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Add blog
 </button>
-<form:form commandName="blog" cssClass="form-horizontal">
+<form:form commandName="blog" cssClass="form-horizontal blogForm">
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -71,15 +71,23 @@
 		<table class="table table-bordered table-hover table-striped">
 		    <thead>
 				<tr>
-           		  <th>Title</th>   
-         		  <th>Link</th>   
+           		  <th>date</th>   
+         		  <th>item</th>   
 				</tr>
   			</thead>
 			<tbody>
     			<c:forEach items="${blog.items}" var="item">
     				<tr>
-    					<td><c:out value="${item.title}" /></td>
-    					<td><c:out value="${item.link}" /></td>
+    					<td><c:out value="${item.publishedDate}" /></td>
+    					<td>
+    					<strong>
+    						<a href="<c:out value="${item.link}" />" target="_blank">
+    							<c:out value="${item.title}" />
+    						</a>
+    					</strong>
+    					<br />
+    					<c:out value="${item.description}" />
+    					</td>
     				</tr>
     			</c:forEach>
    			</tbody>
@@ -106,5 +114,26 @@
     </div>
   </div>
 </div>
-  
+  <script>
+$(document).ready(function(){
+	$(".blogForm").validate({
+		rules: {
+					name: {
+						required: true,
+						minlength:1
+					},
+					url: {
+						required: true,
+						url: true
+					}
+				},
+				highlight: function(element){
+					$(element).closest(".form-group").removeClass("has-success").addClass('has-error');
+				},
+				unhighlight: function(element){
+					$(element).closest(".form-group").removeClass("has-error").addClass('has-success');
+				}
+	});
+});
+</script>
 </details>

@@ -1,7 +1,5 @@
 package com.webnovelscrossroads.service.impl;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,32 +23,34 @@ import com.webnovelscrossroads.model.User;
 @Service
 @Transactional
 public class UserService {
-	
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private BlogDao blogDao;
-	
+
 	@Autowired
 	private ItemDao itemDao;
-	
+
 	@Autowired
 	private RoleDao roleDao;
-	
-	public List<User> findAll(){
+
+	public List<User> findAll() {
 		return userDao.findAll();
 	}
 
 	public User findOne(int id) {
 		return userDao.findOne(id);
 	}
+
 	@Transactional
 	public User findOneWithBlogs(int id) {
 		User user = findOne(id);
 		List<Blog> blogs = blogDao.findByUser(user);
 		for (Blog blog : blogs) {
-			List<Item> items = itemDao.findByBlog(blog, new PageRequest(0, 10, Direction.DESC, "publishedDate"));
+			List<Item> items = itemDao.findByBlog(blog, new PageRequest(0, 10,
+					Direction.DESC, "publishedDate"));
 			blog.setItems(items);
 		}
 		user.setBlogs(blogs);
@@ -61,13 +61,13 @@ public class UserService {
 		user.setEnabled(true);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
-		
-		List<Role> roles =new ArrayList<>();
+
+		List<Role> roles = new ArrayList<>();
 		roles.add(roleDao.findByName("ROLE_USER"));
 		user.setRoles(roles);
-		
+
 		userDao.save(user);
-		
+
 	}
 
 	public User findOneWithBlogs(String name) {
@@ -77,6 +77,10 @@ public class UserService {
 
 	public void delete(int id) {
 		userDao.delete(id);
-		
+
+	}
+
+	public User findOne(String username) {
+		return userDao.findByName(username);
 	}
 }

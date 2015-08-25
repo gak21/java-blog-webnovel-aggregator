@@ -3,6 +3,9 @@ package com.webnovelscrossroads.model;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
 
 
 
@@ -18,7 +21,8 @@ public class Item {
 	private Integer id;
 	
 	private String title;
-
+	
+	@Column(columnDefinition = "TEXT")
 	private String description;
 
 	@Column(name = "published_date")
