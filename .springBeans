@@ -5,11 +5,11 @@
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
-	<enableImports><![CDATA[false]]></enableImports>
+	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/resources/spring/beans-web.xml</config>
-		<config>src/main/resources/spring/beans-datasource.xml</config>
 		<config>src/main/resources/spring/beans-security.xml</config>
+		<config>src/main/resources/spring/beans-datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

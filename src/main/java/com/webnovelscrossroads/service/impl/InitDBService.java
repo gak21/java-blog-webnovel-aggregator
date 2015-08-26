@@ -60,7 +60,19 @@ public class InitDBService {
 		blogJavavids.setUser(userAdmin);
 		blogDao.save(blogJavavids);
 		
-		Item item1 = new Item();
+		Blog tomcat = new Blog();
+		tomcat.setName("tomcat expert");
+		tomcat.setUrl("http://www.tomcatexpert.com/blog/feed");
+		tomcat.setUser(userAdmin);
+		blogDao.save(tomcat);
+		
+		Blog javaworld = new Blog();
+		javaworld.setName("java world core");
+		javaworld.setUrl("http://www.javaworld.com/category/core-java/index.rss");
+		javaworld.setUser(userAdmin);
+		blogDao.save(javaworld);
+		
+	/*	Item item1 = new Item();
 		item1.setBlog(blogJavavids);
 		item1.setTitle("first");
 		item1.setLink("htttp://www.javavids.com");
@@ -72,6 +84,6 @@ public class InitDBService {
 		item2.setTitle("second");
 		item2.setLink("htttp://www.javavids.com");
 		item2.setPublishedDate(new Date());
-		itemDao.save(item2);
+		itemDao.save(item2);*/
 	}
 }
