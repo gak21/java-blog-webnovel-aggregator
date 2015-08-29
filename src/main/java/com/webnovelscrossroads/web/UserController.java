@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webnovelscrossroads.model.Blog;
 import com.webnovelscrossroads.service.impl.BlogService;
@@ -39,14 +40,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/account", method=RequestMethod.POST)
-	public String doAddBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Principal principal){
+	public String doAddBlog(Model model,
+			@Valid @ModelAttribute("blog") Blog blog, BindingResult result,
+			Principal principal, RedirectAttributes redirectAttributes){
+		
 		if (result.hasErrors()) {
 			return account(model, principal);
 		}	
 		
 		String name = principal.getName();
 		blogService.save(blog,name);
-		return "redirect:/account.html?success=true";
+		redirectAttributes.addFlashAttribute("success", true);
+		
+		return "redirect:/account.html";
 	}
 	
 	@RequestMapping("/blog/remove/{id}")

@@ -2,7 +2,7 @@
 <%@ include file="../layout/taglib.jspf" %>
 
 <form:form commandName="user" cssClass="form-horizontal registrationForm">
-	<c:if test="${param.success == true}">
+	<c:if test="${success == true}">
 		<div class="alert alert-success" role="alert">
  		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
  		 Registration success

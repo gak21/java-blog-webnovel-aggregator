@@ -2,7 +2,7 @@
 <%@ include file="../layout/taglib.jspf" %>
 
 <details>
-	<c:if test="${param.success == true}">
+	<c:if test="${success == true}">
 		<div class="alert alert-success" role="alert">
  		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
  		  Added blog success

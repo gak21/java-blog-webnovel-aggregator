@@ -10,6 +10,7 @@
 		<config>src/main/resources/spring/beans-web.xml</config>
 		<config>src/main/resources/spring/beans-security.xml</config>
 		<config>src/main/resources/spring/beans-datasource.xml</config>
+		<config>src/test/java/bean-marshaller.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

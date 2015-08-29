@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webnovelscrossroads.model.User;
 import com.webnovelscrossroads.service.impl.UserService;
@@ -31,12 +32,14 @@ public class RegisterController {
 		return "user-register";
 	}
 	@RequestMapping(method=RequestMethod.POST)
-	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
+	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result,
+			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			return "user-register";
 		}	
 		userService.save(user);
-		return "redirect:/register.html?success=true";
+		redirectAttributes.addFlashAttribute("success", true);
+		return "redirect:/register.html";
 	}
 	@RequestMapping("/available")
 	@ResponseBody
