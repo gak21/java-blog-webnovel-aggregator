@@ -6,10 +6,15 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Entity implementation class for Entity: Role
  *
  */
+@Getter
+@Setter
 @Entity
 public class Role  {
 
@@ -21,29 +26,4 @@ public class Role  {
 
 	@ManyToMany(mappedBy="roles")
 	private List<User> users;
-	
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

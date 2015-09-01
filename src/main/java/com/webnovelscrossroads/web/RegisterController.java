@@ -29,13 +29,13 @@ public class RegisterController {
 	
 	@RequestMapping
 	public String showRegister() {
-		return "user-register";
+		return "register";
 	}
 	@RequestMapping(method=RequestMethod.POST)
 	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
-			return "user-register";
+			return "register";
 		}	
 		userService.save(user);
 		redirectAttributes.addFlashAttribute("success", true);

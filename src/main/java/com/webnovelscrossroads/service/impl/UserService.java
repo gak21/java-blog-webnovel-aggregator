@@ -2,6 +2,7 @@ package com.webnovelscrossroads.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.transaction.Transactional;
 
@@ -47,6 +48,7 @@ public class UserService {
 	@Transactional
 	public User findOneWithBlogs(int id) {
 		User user = findOne(id);
+
 		List<Blog> blogs = blogDao.findByUser(user);
 		for (Blog blog : blogs) {
 			List<Item> items = itemDao.findByBlog(blog, new PageRequest(0, 10,
