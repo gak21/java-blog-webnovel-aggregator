@@ -2,8 +2,6 @@ package com.webnovelscrossroads.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;

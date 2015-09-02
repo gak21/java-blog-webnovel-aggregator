@@ -1,19 +1,6 @@
 package com.webnovelscrossroads.service.impl;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.List;
-
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.webnovelscrossroads.exception.RssException;
-import com.webnovelscrossroads.model.Item;
 
 public class RssServiceTest {
 

@@ -1,4 +1,4 @@
-package com.webnovelscrossroads.web;
+package com.webnovelscrossroads.service.impl;
 
 import java.util.List;
 

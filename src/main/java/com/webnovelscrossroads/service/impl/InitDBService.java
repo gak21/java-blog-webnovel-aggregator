@@ -2,7 +2,6 @@ package com.webnovelscrossroads.service.impl;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.webnovelscrossroads.dao.*;
 import com.webnovelscrossroads.model.Blog;
-import com.webnovelscrossroads.model.Item;
 import com.webnovelscrossroads.model.Role;
 import com.webnovelscrossroads.model.User;
 
@@ -59,7 +57,7 @@ public class InitDBService {
 		blogJavavids.setUrl("http://feeds.feedburner.com/javavids?format=xml");
 		blogJavavids.setUser(userAdmin);
 		blogDao.save(blogJavavids);
-		
+		/*
 		Blog tomcat = new Blog();
 		tomcat.setName("tomcat expert");
 		tomcat.setUrl("http://www.tomcatexpert.com/blog/feed");
@@ -70,7 +68,7 @@ public class InitDBService {
 		javaworld.setName("java world core");
 		javaworld.setUrl("http://www.javaworld.com/category/core-java/index.rss");
 		javaworld.setUser(userAdmin);
-		blogDao.save(javaworld);
+		blogDao.save(javaworld);*/
 		
 	/*	Item item1 = new Item();
 		item1.setBlog(blogJavavids);
