@@ -1,6 +1,7 @@
 package com.webnovelscrossroads.config.spring;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private BasicDataSource dataSource;
+	private DataSource dataSource;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -38,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/");
 	}
 	
-	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {	
 		auth
@@ -49,9 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						+ " join role on user_role.roles_id = role.id"
 						+ " where user.name = ? ")
 				.usersByUsernameQuery("select name, password, enabled from user"
-						+ " where name = ?");
-					
-			
+						+ " where name = ?");			
 	}
 	
 	@Bean

@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.webnovelscrossroads.dao.*;
-import com.webnovelscrossroads.model.Blog;
 import com.webnovelscrossroads.model.Role;
 import com.webnovelscrossroads.model.User;
 
@@ -51,37 +50,32 @@ public class InitDBService {
 		roles.add(adminRole);
 		userAdmin.setRoles(roles);	
 		userDao.save(userAdmin);
+			/*
+		Blog gravity = new Blog();
+		gravity.setName("Gravity");
+		gravity.setUrl("http://gravitytales.com/feed/");
+		gravity.setUser(userAdmin);
+		blogDao.save(gravity);
+
+		Blog scrya = new Blog();
+		scrya.setName("Scrya");
+		scrya.setUrl("https://scryatranslations.wordpress.com/feed/");
+		scrya.setUser(userAdmin);
+		blogDao.save(scrya);
 		
-		Blog blogJavavids = new Blog();
-		blogJavavids.setName("JavaVids");
-		blogJavavids.setUrl("http://feeds.feedburner.com/javavids?format=xml");
-		blogJavavids.setUser(userAdmin);
-		blogDao.save(blogJavavids);
-		/*
-		Blog tomcat = new Blog();
-		tomcat.setName("tomcat expert");
-		tomcat.setUrl("http://www.tomcatexpert.com/blog/feed");
-		tomcat.setUser(userAdmin);
-		blogDao.save(tomcat);
-		
-		Blog javaworld = new Blog();
-		javaworld.setName("java world core");
-		javaworld.setUrl("http://www.javaworld.com/category/core-java/index.rss");
-		javaworld.setUser(userAdmin);
-		blogDao.save(javaworld);*/
-		
-	/*	Item item1 = new Item();
+		Blog translationNations = new Blog();
+		translationNations.setName("Translation Nations");
+		translationNations.setUrl("http://www.translationnations.com/feed/");
+		translationNations.setUser(userAdmin);
+		blogDao.save(translationNations);
+*/
+		/*	
+	Item item1 = new Item();
 		item1.setBlog(blogJavavids);
 		item1.setTitle("first");
 		item1.setLink("htttp://www.javavids.com");
 		item1.setPublishedDate(new Date());
 		itemDao.save(item1);
-		
-		Item item2 = new Item();
-		item2.setBlog(blogJavavids);
-		item2.setTitle("second");
-		item2.setLink("htttp://www.javavids.com");
-		item2.setPublishedDate(new Date());
-		itemDao.save(item2);*/
+	 */
 	}
 }

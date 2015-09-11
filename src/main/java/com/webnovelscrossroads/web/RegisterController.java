@@ -31,6 +31,7 @@ public class RegisterController {
 	public String showRegister() {
 		return "register";
 	}
+	
 	@RequestMapping(method=RequestMethod.POST)
 	public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result,
 			RedirectAttributes redirectAttributes) {
@@ -41,6 +42,7 @@ public class RegisterController {
 		redirectAttributes.addFlashAttribute("success", true);
 		return "redirect:/register.html";
 	}
+	
 	@RequestMapping("/available")
 	@ResponseBody
 	public String available(@RequestParam String username){

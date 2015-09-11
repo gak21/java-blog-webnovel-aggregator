@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
-
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <tilesx:useAttribute name="current" scope="request" />
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 	
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
+	<link rel="stylesheet" href='<spring:theme code="styleSheet" />'>
+	
 </head>
 <body>
 <h1 id="h01"></h1>

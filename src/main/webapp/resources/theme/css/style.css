@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+body {
+    background-attachment: fixed;
+    background-image: url('/resources/theme/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center; 
+}
+h1 {
+    color: green;
+}
