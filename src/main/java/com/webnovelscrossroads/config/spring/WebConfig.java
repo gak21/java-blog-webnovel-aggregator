@@ -1,5 +1,7 @@
 package com.webnovelscrossroads.config.spring;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
@@ -11,15 +13,20 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.context.ThemeSource;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
+import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ThemeResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
+
+import com.webnovelscrossroads.config.spring.viewresolver.JsonViewResolver;
 
 @Configuration
 @EnableWebMvc
@@ -49,25 +56,41 @@ public class WebConfig extends WebMvcConfigurerAdapter implements
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
-	
+
 	/*
-	 
-	 * TODO: fix ResourceHandlerRegistry 
-	 * * reason: Not working after refactoring process.
-	 * * BUGNOTE: 
-	 * Dispatecher need to have mapping with "/theme*" for using url(/theme/img/bg.jpg)
-	 *  ADD:.antMatchers("/theme**").permitAll() in security to get warn page not found in log
-	 *  SimpleUrlHandlerMapping in log4j show added path /theme/*
-	 *  temporary solution full path eg. url('/resources/theme/img/bg.jpg');
+	 * TODO: fix ResourceHandlerRegistry and uncomment * reason: Not working
+	 * after refactoring process. * BUGNOTE: Dispatecher need to have mapping
+	 * with "/theme*" for using url(/theme/img/bg.jpg)
+	 * ADD:.antMatchers("/theme**").permitAll() in security to get warn page not
+	 * found in log SimpleUrlHandlerMapping in log4j show added path /theme/*
+	 * temporary solution full path eg. url('/resources/theme/img/bg.jpg');
 	 */
-/*	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/theme/*")
-				.addResourceLocations("/resources/theme/")
-				.setCacheControl(
-						CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic());
+	/*
+	 * @Override public void addResourceHandlers(ResourceHandlerRegistry
+	 * registry) { registry.addResourceHandler("/theme/*")
+	 * .addResourceLocations("/resources/theme/") .setCacheControl(
+	 * CacheControl.maxAge(1, TimeUnit.HOURS).cachePublic()); }
+	 */
+	
+	//min. config for json
+	@Bean
+	public ViewResolver contentNegotiatingViewResolver(
+			ContentNegotiationManager manager) {
+		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+		resolver.setContentNegotiationManager(manager);
+
+		// Define all possible view resolvers
+		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+		resolvers.add(jsonViewResolver());
+
+		resolver.setViewResolvers(resolvers);
+		return resolver;
 	}
-*/
+
+	@Bean
+	public ViewResolver jsonViewResolver() {
+		return new JsonViewResolver();
+	}
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -87,7 +110,6 @@ public class WebConfig extends WebMvcConfigurerAdapter implements
 
 	@Override
 	public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

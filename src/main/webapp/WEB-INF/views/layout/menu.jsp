@@ -5,7 +5,7 @@
 <jsp:useBean id="current" type="java.lang.String" scope="request"/>
 <c:url value="/logout" var="logoutUrl" />
 
- 	<nav class="navbar navbar-default">
+ 	<nav id="nav-top" class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -19,6 +19,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="${current == 'index' ? 'active' : ''}"><a href="<spring:url value="/" />">Home</a></li>
+              <li class="${current == 'home2' ? 'active' : ''}"><a href="<spring:url value="/home2.html" />">Home2</a></li>
               <security:authorize access="hasRole('ROLE_ADMIN')">
               <li class="${current == 'users' ? 'active' : ''}"><a href="<spring:url value="/users.html" />">Users</a></li>
               </security:authorize>
@@ -30,9 +31,9 @@
               <li class="${current == 'account' ? 'active' : ''}" ><a href="<spring:url value="/account.html" />">My account</a></li>
               <li><a href="#" onclick="document.forms[0].submit();">Logout</a></li>
               	<!-- spring security log out for csrf  -->
-			  <form method="post" action="${logoutUrl}" id="form-logout">  	
-    	 		<security:csrfInput/>       
-			  </form>
+			         <form method="post" action="${logoutUrl}" id="form-logout">  	
+    	 		      <security:csrfInput/>       
+			          </form>
               </security:authorize>
             </ul>
           </div><!--/.nav-collapse -->

@@ -43,4 +43,24 @@ public class ItemAsyncTask {
 			e.printStackTrace();
 		}		
 	}
+	/**
+	 * Method Recommended for  post metodin Controller.
+	 * it will load added items to the view, before sending response.
+	 * @param blog
+	 */
+	@CacheRemoveAll(cacheName = "homeItems")
+	public void saveItemsFromAsyncOff(Blog blog){
+		try {
+			List<Item> items = rssService.getItems(blog.getUrl());
+			for (Item item : items) {
+				Item saveItem = itemDao.findByBlogAndLink(blog, item.getLink());
+				if (saveItem == null) {
+					item.setBlog(blog);
+					itemDao.save(item);			
+				}
+			}
+		} catch (RssException e) {
+			e.printStackTrace();
+		}		
+	}
 }

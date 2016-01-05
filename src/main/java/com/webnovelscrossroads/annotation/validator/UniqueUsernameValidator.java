@@ -25,6 +25,4 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 		return userDao.findByName(username) == null;
 	}
 
-
-
 }

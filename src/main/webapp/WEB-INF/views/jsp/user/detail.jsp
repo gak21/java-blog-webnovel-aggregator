@@ -18,8 +18,6 @@
   </c:forEach>
   </ul>
 
-
-
   <!-- Tab panes -->
   <div class="tab-content">
   <c:forEach items="${user.blogs}" var="blog">
@@ -66,5 +64,4 @@
     </div>
   </div>
 </div>
-  
 </details>

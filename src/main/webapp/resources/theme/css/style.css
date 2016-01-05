@@ -2,10 +2,105 @@
 body {
     background-attachment: fixed;
     background-image: url('/resources/theme/img/bg.jpg');
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position:center; 
 }
+
 h1 {
     color: green;
+}
+
+
+
+
+
+dl.border-around
+{
+    margin: 2em 0;
+    padding: 0;
+    width: 20em;
+}
+    
+.border-around dt
+{
+    background-color: #131210;
+    color: #959289;
+    padding: .5em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border-left: 1px solid #131210;
+    border-right: 1px solid #131210;
+    border-top: 1px solid #131210;
+}
+    
+.border-around dd
+{
+    margin: 0 0 1em 0;
+    background: #DBD8D8;
+    text-align: center;
+    color: black;
+    padding: 1em .5em;
+    font-style: italic;
+    border-left: 1px solid #131210;
+    border-right: 1px solid #131210;
+    border-bottom: 1px solid #131210;
+}
+
+
+/* animation tab */
+
+#formContainer {
+    position: relative;
+    height: 800px;
+}
+
+#formContainer table {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Enabling 3d space for the transforms */
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    /* When the forms are flipped, they will be hidden */
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Enabling a smooth animated transition */
+    -moz-transition: 0.8s;
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+}
+
+#recover {
+    opacity: 0;
+    /* Rotating the recover password form by default */
+    -moz-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+#formContainer.flipped #login {
+    opacity: 0;
+    /**
+     * Rotating the login form when the
+     * flipped class is added to the container
+     */
+    -moz-transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+#formContainer.flipped #recover {
+    opacity: 1;
+    /* Rotating the recover div into view */
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+#nav-below {
+    position: relative;
 }
